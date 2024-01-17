@@ -1,0 +1,26 @@
+.main_nav_container{
+    display: flex;
+    justify-content: space-around;
+    background: rgb(244, 241, 241);
+    
+    font-weight: 500;
+    padding: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 20px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.main_nav_container span{
+    cursor: pointer;
+}
+.main_nav_container span:hover{
+    color: rgb(0, 255, 157);
+}
+
+.main_content{
+    padding: 10px;
+    margin-top: 10vh;
+}
