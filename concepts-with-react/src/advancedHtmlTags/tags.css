@@ -1,0 +1,11 @@
+
+.tags_details_wrap{
+  background: purple;
+  width: 40vw;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.tags_details_wrap summary{
+    cursor: pointer;
+}

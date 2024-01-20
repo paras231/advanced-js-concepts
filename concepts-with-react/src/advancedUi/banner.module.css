@@ -1,0 +1,91 @@
+.banner_container {
+  padding: 0;
+  margin: 0;
+}
+
+.banner_bg_wrapper {
+  background-image: url("../assets/bannerbg.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 60vh;
+}
+
+.banner_bg_wrapper div h3 {
+  margin-top: 10vh;
+  border-radius: 10px;
+  color: black;
+  backdrop-filter: sepia(90%);
+  font-size: 2rem;
+  font-family: cursive;
+}
+
+.banner_details {
+  color: white;
+  font-weight: bold;
+  backdrop-filter: blur(60px);
+}
+
+.banner_bg_wrapper div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.bg_child {
+  padding: 10px;
+  backdrop-filter: blur(10px);
+}
+
+.card_section_wrapper {
+  margin-top: 5vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 2em;
+}
+
+.card_wrapper {
+  height: 20vh;
+  /* width: 30vw; */
+  padding: 10px;
+  background: whitesmoke;
+  color: black;
+  border-radius: 5px;
+  transition: box-shadow 0.3s ease;
+  transition: transform 0.6s ease;
+}
+
+.card_details_text {
+  color: rgb(169, 167, 167);
+}
+
+.card_wrapper:hover {
+  cursor: pointer;
+  transform: translateY(-5vh);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+/* video bg styles */
+
+.video_bg_container video {
+  /* height: 60vh; */
+  width: 100%;
+}
+
+.video_text_wrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.video_text_content {
+  width: 60vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  mix-blend-mode: hard-light;
+  /* background: red; */
+  transform: translateY(40vh);
+}

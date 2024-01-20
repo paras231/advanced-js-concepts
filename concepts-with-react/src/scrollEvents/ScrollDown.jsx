@@ -17,6 +17,8 @@ useEffect(()=>{
     if (elementRef.current) {
       const maxHeight = 50;
       const currentHeight = elementRef.current.offsetHeight;
+      const currentPadding =  elementRef.current.style.padding;
+      const newPadding =  currentPadding + 10;
       const newHeight = currentHeight + 10;
       console.log(currentHeight); 
     
@@ -27,6 +29,7 @@ useEffect(()=>{
         console.log('running else');
         if (newHeight <= maxHeight) {
           elementRef.current.style.height = `${newHeight}px`;
+          elementRef.current.style.padding = `${newPadding}px`;
         }
         elementRef.current.style.transition = 'height 2s ease, background-color 1s ease';
         // elementRef.current.style.background = 'red';
