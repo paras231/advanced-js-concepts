@@ -1,0 +1,38 @@
+.modal {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  box-shadow: rgba(100, 100, 111, 0.3) 0px 7px 29px 0px;
+  background-color: white;
+  border: 2px solid rgb(240, 240, 240);
+  border-radius: 12px;
+  position: absolute;
+  width: 250px;
+  top: 70px;
+  left: calc(50% - 125px);
+  bottom: 70px;
+}
+
+.show_btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20vh;
+  cursor: pointer;
+  background: rgb(21, 154, 215);
+  color: white;
+  border: none;
+  outline: none;
+}
+
+.tool_tip {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: whitesmoke;
+  border-radius: 12px;
+  width: 10vw;
+  height: 3vh;
+  position: absolute;
+  box-shadow: rgba(100, 100, 111, 0.3) 0px 7px 29px 0px;
+}
