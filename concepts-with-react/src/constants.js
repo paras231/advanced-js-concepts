@@ -15,6 +15,59 @@ export const routes = [
   {
     path: "/settings",
     label: "Settings",
-    icon: IoIosSettings ,
+    icon: IoIosSettings,
+  },
+];
+
+export const users = [
+  {
+    userName: "Deepesh",
+    age: 22,
+    address: "Mumbai",
+  },
+  {
+    userName: "Amit",
+    age: 25,
+    address: "Delhi",
+  },
+  {
+    userName: "Priya",
+    age: 28,
+    address: "Bangalore",
+  },
+  {
+    userName: "Rahul",
+    age: 23,
+    address: "Chennai",
+  },
+  {
+    userName: "Sneha",
+    age: 27,
+    address: "Kolkata",
+  },
+  {
+    userName: "Neha",
+    age: 24,
+    address: "Hyderabad",
+  },
+  {
+    userName: "Raj",
+    age: 30,
+    address: "Pune",
+  },
+  {
+    userName: "Kiran",
+    age: 26,
+    address: "Ahmedabad",
+  },
+  {
+    userName: "Ananya",
+    age: 29,
+    address: "Jaipur",
+  },
+  {
+    userName: "Vikram",
+    age: 31,
+    address: "Chandigarh",
   },
 ];

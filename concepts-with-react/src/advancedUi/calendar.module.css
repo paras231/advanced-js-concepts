@@ -1,0 +1,83 @@
+.calendar_box {
+  padding: 10px;
+  display: grid;
+  grid-row-gap: 2px;
+  grid-template-columns: 5vw 5vw 5vw;
+  gap: 10px;
+  background-color: rgb(18, 123, 214);
+  height: 35vh;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.calendar_wrapper {
+  margin-top: 25vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wrap_span{
+  padding: 10px;
+}
+
+.month_span {
+    /* margin-top: 3px; */
+  color: white;  
+  /* border: 1px solid rgb(154, 136, 1); */
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 5px;
+  width: 5vw;
+  background-color: rgb(208, 12, 234);
+  transition:background 0.5s ease ;
+}
+
+.month_span:hover{
+    background: rgb(27, 222, 199);
+    color: white;
+    border: none;
+   /* padding: 3px; */
+}
+
+.selected_month_active{
+    background: rgb(27, 222, 199);
+    color: white;  
+    background: rgb(27, 222, 199);
+    color: white;
+    border: none;
+    /* border: 1px solid rgb(154, 136, 1); */
+}
+
+.displayer_container{
+  margin-top: 3%;
+  padding-bottom: 3%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.date_display_wrapper{
+  width: 40vw;
+  padding: 2%;
+  display: grid;
+  grid-row-gap: 2px;
+  grid-template-columns: 5vw 5vw 5vw 5vw 5vw 5vw 5vw;
+  gap: 10px;
+  background-color: rgb(18, 123, 214);
+  height: 35vh;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.date_btn{
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
