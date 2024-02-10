@@ -14,6 +14,7 @@ import StatePractice from "./reactFundamentals/StatePractice";
 import CustomCalendar from "./advancedUi/CustomCalendar";
 import BottomNavigation from "./advancedUi/BottomNavigation";
 import PopperComponent from "./advancedUi/PopperComponent";
+import CustomSelectbox from "./advancedUi/CustomSelectbox";
 
 const App = () => {
   return (
@@ -30,7 +31,7 @@ const App = () => {
         <BrowserRouter>
           <Routes>
             {/* <Route path="/" element={<StoreStateUrl/>}/> */}
-            <Route path="/" element={<PopperComponent />} />
+            <Route path="/" element={<CustomSelectbox />} />
           </Routes>
         </BrowserRouter>
         </div>
