@@ -8,6 +8,7 @@ import {
 } from "./loops_script.js";
 import { hof } from "./function_script.js";
 import { hosting } from "./interview.js";
+import { proxyObjectLearning } from "./function_script.js";
 // const userNames = iterateThroughNames();
 
 // // console.log(userNames);
@@ -24,10 +25,12 @@ import { hosting } from "./interview.js";
 const values = hof()();
 //  console.log(values);
 
-hosting();
+// hosting();
 
 // iife
 
 // (function(){
 // console.log('i am iife');
 // })()
+
+proxyObjectLearning();

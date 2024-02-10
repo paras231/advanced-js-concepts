@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "./calendar.module.css";
 
+
 const CustomCalendar = () => {
   const [selectedMonth, setSelectedMonth] = useState({
     name: "",
@@ -8,23 +9,21 @@ const CustomCalendar = () => {
   });
 
   const [currenYear, setCurrentyear] = useState(new Date().getFullYear());
-
+  const [currrentMonth, setCurrentMonth] = useState(new Date().getMonth());
   function handleSelectMonth(m, i) {
     if (m === selectedMonth.name) {
       return;
     }
     setSelectedMonth({ ...selectedMonth, name: m, key: i });
   }
-  // get number of days ina month.
-  function getDaysInMonth(month) {
-    if (selectedMonth.name) {
-      const currenYear = new Date().getFullYear();
 
-      return new Date(currenYear, month + 1, 0).getDate();
+  function handleYearChange(type) {
+    if (type === "increment") {
+      setCurrentyear((prev) => prev + 1);
+    } else {
+      setCurrentyear((prev) => prev - 1);
     }
   }
-
-  const days = getDaysInMonth(selectedMonth.key);
 
   const months = [
     "Jan",
@@ -47,6 +46,9 @@ const CustomCalendar = () => {
           months={months}
           selectHandler={handleSelectMonth}
           selectedMonth={selectedMonth}
+          currenYear={currenYear}
+          currrentMonth={months[currrentMonth]}
+          changeYearHandler={handleYearChange}
         />
       </main>
       {selectedMonth.name && (
@@ -77,6 +79,10 @@ function DateDisplayer({ selectedMonth, currenYear, allMonths }) {
       date.setDate(date.getDate() + 1);
     }
     setDays([]);
+    updaterFunc(days);
+  };
+
+  function updaterFunc(days) {
     days.forEach((day) => {
       const dateVal = new Date(day).getDate();
 
@@ -96,7 +102,7 @@ function DateDisplayer({ selectedMonth, currenYear, allMonths }) {
         ]);
       }
     });
-  };
+  }
 
   useEffect(() => {
     getMonthDayArray(selectedMonth, currenYear);
@@ -120,25 +126,67 @@ function DateDisplayer({ selectedMonth, currenYear, allMonths }) {
   );
 }
 
-function MonthsList({ months, selectHandler, selectedMonth }) {
+// display default month selected-:
+
+function DefaulDisplayer({
+  month,
+  currenYear,
+  months,
+  currrentMonth,
+  changeYearHandler,
+}) {
   return (
     <>
-      <div className={styles.calendar_box}>
-        {months.map((m, idx) => {
-          return (
-            <div className={`${styles.wrap_span} }`} key={idx}>
-              <span
-                onClick={() => selectHandler(m, idx)}
-                className={`${styles.month_span} ${
-                  selectedMonth.name === m ? styles.selected_month_active : ""
-                }`}
-              >
-                {m}
-              </span>
-            </div>
-          );
-        })}
-      </div>
+      <section className={styles.default_month_display_wrapper}>
+        <button onClick={() => changeYearHandler("decrement")}>{"<"}</button>
+        <span>{month.name ? months[month.key] : currrentMonth}</span>
+        <span>{currenYear || 2024}</span>
+        <button onClick={() => changeYearHandler("increment")}>{">"}</button>
+      </section>
+    </>
+  );
+}
+
+function MonthsList({
+  months,
+  selectHandler,
+  selectedMonth,
+  currenYear,
+  currrentMonth,
+  changeYearHandler,
+}) {
+  
+
+  // handle logic for day selection 
+
+
+  return (
+    <>
+      <section className={styles.month_list_container}>
+        <DefaulDisplayer
+          month={selectedMonth}
+          months={months}
+          currenYear={currenYear}
+          currrentMonth={currrentMonth}
+          changeYearHandler={changeYearHandler}
+        />
+        <div className={styles.calendar_box}>
+          {months.map((m, idx) => {
+            return (
+              <div className={`${styles.wrap_span} }`} key={idx}>
+                <span
+                  onClick={() => selectHandler(m, idx)}
+                  className={`${styles.month_span} ${
+                    selectedMonth.name === m ? styles.selected_month_active : ""
+                  }`}
+                >
+                  {m}
+                </span>
+              </div>
+            );
+          })}
+        </div>
+      </section>
     </>
   );
 }

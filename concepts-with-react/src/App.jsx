@@ -12,6 +12,8 @@ import ReactportalComponent from "./reactFundamentals/ReactportalComponent";
 import StoreStateUrl from "./reactFundamentals/StoreStateUrl";
 import StatePractice from "./reactFundamentals/StatePractice";
 import CustomCalendar from "./advancedUi/CustomCalendar";
+import BottomNavigation from "./advancedUi/BottomNavigation";
+import PopperComponent from "./advancedUi/PopperComponent";
 
 const App = () => {
   return (
@@ -24,12 +26,15 @@ const App = () => {
         {/* <Banner /> */}
         {/* <Sidebar routes={routes}/> */}
         {/* <ReactportalComponent/> */}
+        <div className="flex items-center justify-center mt-40">
         <BrowserRouter>
           <Routes>
             {/* <Route path="/" element={<StoreStateUrl/>}/> */}
-            <Route path="/" element={<CustomCalendar />} />
+            <Route path="/" element={<PopperComponent />} />
           </Routes>
         </BrowserRouter>
+        </div>
+        
       </main>
     </>
   );

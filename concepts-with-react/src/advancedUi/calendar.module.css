@@ -1,5 +1,15 @@
+
+.month_list_container{
+  background-color: rgb(18, 123, 214);
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+}
+
 .calendar_box {
+  z-index: 10;
   padding: 10px;
+  margin-top: 5vh;
   display: grid;
   grid-row-gap: 2px;
   grid-template-columns: 5vw 5vw 5vw;
@@ -11,6 +21,7 @@
 }
 
 .calendar_wrapper {
+  
   margin-top: 25vh;
   display: flex;
   justify-content: center;
@@ -79,5 +90,24 @@
   border-radius: 5px;
   border: none;
   outline: none;
+  cursor: pointer;
+}
+
+.default_month_display_wrapper{
+  background: whitesmoke;
+  padding: 5px;
+  z-index: 20;
+  display: flex;
+  gap: 4px;
+}
+
+.default_month_display_wrapper button{
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border: none;
+  outline: none;
+  background-color: rgb(9, 143, 233);
+  color: white;
+  font-weight: bold;
+  border-radius: 3px;
   cursor: pointer;
 }

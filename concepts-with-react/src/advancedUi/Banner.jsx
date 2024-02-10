@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./banner.module.css";
-import nebula from "../assets/nebula.mp4";
+// import nebula from "../assets/nebula.mp4";
 const Banner = () => {
   return (
     <>
