@@ -1,5 +1,5 @@
 // higher order functions-:
-
+import fs from 'fs';
 export function hof() {
   return function innerFunc() {
     return ["HELLO WORLD"];
@@ -27,16 +27,52 @@ export function proxyObjectLearning() {
 
   const handlers = {
     get(target, prop, receiver) {
-        console.log(`Getting ${prop}`);
-        return Reflect.get(target, prop, receiver);
+      console.log(`Getting ${prop}`);
+      return Reflect.get(target, prop, receiver);
     },
-    set(target,prop,value,receiver){
-        console.log(`Setting ${prop} to ${value}`);
-        return Reflect.set(target, prop, value, receiver);
-    }
+    set(target, prop, value, receiver) {
+      console.log(`Setting ${prop} to ${value}`);
+      return Reflect.set(target, prop, value, receiver);
+    },
   };
 
   const proxy = new Proxy(target, handlers);
-  proxy.text = 'hello this is new text';
+  proxy.text = "hello this is new text";
   console.log(proxy.text);
+}
+
+// practice promises-:
+
+export function myPromise(str, ...handlers) {
+  return new Promise((resolve, reject) => {
+    if (!str) {
+      reject("provide a string");
+    }
+    if (str && str.length < 5) {
+      reject("String can not be taken as valid string");
+    }
+    
+    let allHandlers = [];
+    for (const handler of handlers) {
+      
+      if (typeof handler !== "function") {
+        reject("handler must be function");
+      }
+      allHandlers.push(handler);
+    }
+    resolve(allHandlers);
+  });
+}
+
+// readfile
+
+export function readingFile(){
+  return new Promise((resolve,reject)=>{
+    fs.readFile('interview.js','utf-8',(err,data)=>{
+      if(err){
+        reject(err);
+      }
+      resolve(data);
+    })
+  })
 }
