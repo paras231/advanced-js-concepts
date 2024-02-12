@@ -15,6 +15,7 @@ import CustomCalendar from "./advancedUi/CustomCalendar";
 import BottomNavigation from "./advancedUi/BottomNavigation";
 import PopperComponent from "./advancedUi/PopperComponent";
 import CustomSelectbox from "./advancedUi/CustomSelectbox";
+import WrapperSelectBox from "./advancedUi/WrapperSelectBox";
 
 const App = () => {
   return (
@@ -31,7 +32,7 @@ const App = () => {
         <BrowserRouter>
           <Routes>
             {/* <Route path="/" element={<StoreStateUrl/>}/> */}
-            <Route path="/" element={<CustomSelectbox />} />
+            <Route path="/" element={<WrapperSelectBox />} />
           </Routes>
         </BrowserRouter>
         </div>

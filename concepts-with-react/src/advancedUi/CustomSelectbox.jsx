@@ -1,8 +1,7 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import styles from "./popper.module.css";
 import { Popover } from "react-tiny-popover";
-
-
+import selectstyles from "./selectbox.module.css";
 // description and requirements-:
 
 // for a custom select box we first need a popover component that actually show the scrollable options to select.
@@ -11,47 +10,106 @@ import { Popover } from "react-tiny-popover";
 // the select box should be createable , selectable , and searchable.
 // it should contain a option to clear all the selected options.
 
-const CustomSelectbox = () => {
+const CustomSelectbox = ({
+  options,
+  name,
+  isDisabled,
+  isClearable,
+  isSearchable,
+  defaultValue,
+}) => {
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
+  const [selectedOption, setSelectedOption] = useState(null);
+  //  calculate  the distance of main input from top -:
+
+  // ref used for input element
+  const divref = useRef(null);
+
+  const [distanceFromTop, setDistanceFromTop] = useState(0);
+
+  useEffect(() => {
+    setDistanceFromTop(divref.current?.offsetTop);
+  }, [distanceFromTop]);
+
+  // this margin-top is used to position the popover content,useful for all devices just below the input component
+  const marginTop = (distanceFromTop * 30) / 100 + 160;
+
+  // select an option-:
+  // while selecting an option we need to display the label in input and get value of selected object
+  // we basically need to select the complete object.
+
+  // handler for selecting single option
+
+  function handleSelectSingleOption(option) {
+    console.log('clicked');
+    console.log(option)
+    setSelectedOption(option);
+  }
+
+  console.log(selectedOption);
+
   return (
     <>
-      <Popover
-        isOpen={isPopoverOpen}
-        positions={["bottom"]} // preferred positions by priority
-        content={<PopoverContent />}
-      >
-        <button
-          className={styles.popper_btn}
-          onClick={() => setIsPopoverOpen(!isPopoverOpen)}
+      <section>
+        <Popover
+          isOpen={isPopoverOpen}
+          positions={["bottom"]} // preferred positions by priority
+          content={
+            <PopoverContent
+              marginTop={marginTop}
+              options={options}
+              handleSelectSingleOption={handleSelectSingleOption}
+            />
+          }
         >
-          Click me!
-        </button>
-      </Popover>
+          <InputWrapper
+            onFocus={() => setIsPopoverOpen(true)}
+            onBlur={() => setIsPopoverOpen(false)}
+            divRef={divref}
+          />
+        </Popover>
+      </section>
     </>
   );
 };
 
 export default CustomSelectbox;
 
-function PopoverContent() {
+function PopoverContent({ marginTop, options, handleSelectSingleOption }) {
+
   return (
     <>
-      <div className={styles.popper_content}>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae
-        dignissimos labore neque iste quaerat nemo rerum ut laboriosam possimus
-        optio quibusdam doloribus odit sequi animi sit aliquid eos maiores quos
-        eaque, veniam similique temporibus? Voluptas officiis doloremque neque
-        natus accusantium Lorem, ipsum dolor sit amet consectetur adipisicing
-        elit. Debitis maiores officiis aliquam, in incidunt dolor expedita a
-        voluptatem dolorum aut quam, voluptatum facilis ex cum eum! Hic id
-        necessitatibus est quae deserunt quaerat quos in reprehenderit natus
-        rerum! Officia animi, exercitationem odit voluptatem distinctio corrupti
-        velit magnam ipsam fugiat laborum architecto vitae ex illo accusantium
-        impedit dolores. Facere adipisci molestiae reiciendis aliquid. Possimus
-        eaque esse architecto vel quo assumenda. Molestiae sunt autem asperiores
-        doloribus fuga quam ad reprehenderit optio! Itaque, minus laudantium!
-        Temporibus quae saepe laudantium nesciunt debitis itaque ipsum! Optio
-        dolorem in, ducimus qui animi debitis ad tempora itaque.
+      <section
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignContent: "center",
+          marginTop: `${marginTop}px`,
+        }}
+      >
+        <div className={styles.popper_content}>
+          <div className={styles.options_wrapper}>
+            {options.map((option) => {
+              
+              return <span onClick={()=>handleSelectSingleOption(option)} key={option.value}>{option.label}</span>;
+            })}
+          </div> 
+        </div>
+      </section>
+    </>
+  );
+}
+
+function InputWrapper({ onChange, value, onFocus, onBlur, divRef }) {
+  return (
+    <>
+      <div ref={divRef} className={selectstyles.input_wrapper}>
+        <input
+          placeholder="Select..."
+          onFocus={onFocus}
+          onBlur={onBlur}
+          type="text"
+        />
       </div>
     </>
   );
