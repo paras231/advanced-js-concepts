@@ -19,7 +19,12 @@ const CustomSelectbox = ({
   defaultValue,
 }) => {
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
+  const [allOptions, setAllOptions] = useState(options);
   const [selectedOption, setSelectedOption] = useState(null);
+  const [typedValue, setTypedValue] = useState({
+    label: "",
+    value: "",
+  });
   //  calculate  the distance of main input from top -:
 
   // ref used for input element
@@ -41,13 +46,71 @@ const CustomSelectbox = ({
   // handler for selecting single option
 
   function handleSelectSingleOption(option) {
-    console.log('clicked');
-    console.log(option)
+    console.log("clicked");
+    console.log(option);
     setSelectedOption(option);
+    // close option as selected
+    setIsPopoverOpen(false);
   }
 
-  console.log(selectedOption);
+  //  clear selected value from input if backspace is pressed-:
+  function clearInputOnKeyPress(e) {
+    if (e.key === "Backspace" || e.key === "Delete") {
+      // instead of setting it to null we just make it an object.
+      setSelectedOption({ ...selectedOption, label: "" });
+      setTypedValue({ ...typedValue, label: "", value: "" });
+    }
+  }
 
+  // type handler for typedValue-:
+
+  function handleTypedValue(e) {
+    setTypedValue({
+      ...typedValue,
+      value: e.target.value,
+      label: e.target.value,
+    });
+  }
+
+  // make the input searchable
+
+  function filterOptionsOnSearch(e) {
+    const originData = [...allOptions]
+    setAllOptions((data) => {
+      const inputValue = e.target.value.trim().toLowerCase(); // Trim and lowercase input value
+
+      if (inputValue.length > 1) {
+        const filteredOptions = data.filter((t) =>
+          t.value.toLowerCase().includes(inputValue)
+        );
+
+        if (filteredOptions.length > 0) {
+          setTypedValue({
+            ...typedValue,
+            label: filteredOptions[0].label,
+            value: filteredOptions[0].value,
+          });
+        } else {
+          setTypedValue({
+            ...typedValue,
+            // label: e.target.value,
+            value: e.target.value,
+          });
+        }
+        return filteredOptions;
+      } else {
+        setTypedValue({
+          ...typedValue,
+          label: e.target.value,
+          value: e.target.value,
+        });
+        return originData;
+      }
+    });
+  }
+
+ 
+  console.log(allOptions);
   return (
     <>
       <section>
@@ -57,15 +120,22 @@ const CustomSelectbox = ({
           content={
             <PopoverContent
               marginTop={marginTop}
-              options={options}
+              options={allOptions}
               handleSelectSingleOption={handleSelectSingleOption}
             />
           }
         >
           <InputWrapper
             onFocus={() => setIsPopoverOpen(true)}
-            onBlur={() => setIsPopoverOpen(false)}
+            // onBlur={() => setIsPopoverOpen(false)}
             divRef={divref}
+            value={selectedOption?.value}
+            onKeyDown={clearInputOnKeyPress}
+            typedValue={typedValue}
+            setTypedValue={setTypedValue}
+            isSearchable={isSearchable}
+            handleTypedValue={handleTypedValue}
+            onSearch={filterOptionsOnSearch}
           />
         </Popover>
       </section>
@@ -76,7 +146,6 @@ const CustomSelectbox = ({
 export default CustomSelectbox;
 
 function PopoverContent({ marginTop, options, handleSelectSingleOption }) {
-
   return (
     <>
       <section
@@ -90,17 +159,36 @@ function PopoverContent({ marginTop, options, handleSelectSingleOption }) {
         <div className={styles.popper_content}>
           <div className={styles.options_wrapper}>
             {options.map((option) => {
-              
-              return <span onClick={()=>handleSelectSingleOption(option)} key={option.value}>{option.label}</span>;
+              return (
+                <span
+                  onClick={() => handleSelectSingleOption(option)}
+                  key={option.value}
+                >
+                  {option.label}
+                </span>
+              );
             })}
-          </div> 
+          </div>
         </div>
       </section>
     </>
   );
 }
 
-function InputWrapper({ onChange, value, onFocus, onBlur, divRef }) {
+function InputWrapper({
+  onChange,
+  value,
+  onFocus,
+  onBlur,
+  divRef,
+  onKeyDown,
+  typedValue,
+  setTypedValue,
+  isSearchable,
+  handleTypedValue,
+  onSearch,
+}) {
+  console.log(typedValue);
   return (
     <>
       <div ref={divRef} className={selectstyles.input_wrapper}>
@@ -109,6 +197,9 @@ function InputWrapper({ onChange, value, onFocus, onBlur, divRef }) {
           onFocus={onFocus}
           onBlur={onBlur}
           type="text"
+          value={value ? value : typedValue.value}
+          onKeyDown={onKeyDown}
+          onChange={isSearchable ? onSearch : handleTypedValue}
         />
       </div>
     </>
