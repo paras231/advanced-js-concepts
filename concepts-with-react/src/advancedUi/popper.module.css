@@ -4,7 +4,6 @@
     gap: 3px;
      overflow-y: scroll;
     height: 30vh;
-    width: 30vw;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
@@ -42,7 +41,7 @@
 
 @media screen  and (max-width:480px) {
     .popper_content{
-      width: 60%;
-      height: 50vh;
+    
+      height: 20vh;
     }
 }

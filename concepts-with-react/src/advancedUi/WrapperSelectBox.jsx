@@ -25,7 +25,7 @@ const options = [
 const WrapperSelectBox = () => {
   return (
     <>
-      <CustomSelectbox isSearchable={true} options={options} />
+      <CustomSelectbox isSearchable={false} options={options} />
     </>
   );
 };

@@ -18,6 +18,8 @@ const CustomSelectbox = ({
   isSearchable,
   defaultValue,
 }) => {
+ 
+  // console.log(windowWidth);
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
   const [allOptions, setAllOptions] = useState(options);
   const [selectedOption, setSelectedOption] = useState(null);
@@ -31,14 +33,18 @@ const CustomSelectbox = ({
   const divref = useRef(null);
 
   const [distanceFromTop, setDistanceFromTop] = useState(0);
-
+  const [distanceFromLeft, setDistanceFromLeft] = useState(0);
+  const [popoverWidth, setPopoverWidth] = useState(0);
   useEffect(() => {
     setDistanceFromTop(divref.current?.offsetTop);
-  }, [distanceFromTop]);
-
+    setDistanceFromLeft(divref.current?.offsetLeft);
+    setPopoverWidth(divref.current?.offsetWidth);
+  }, [distanceFromTop, distanceFromLeft, divref.current?.offsetWidth]);
+  console.log(divref.current?.offsetWidth);
   // this margin-top is used to position the popover content,useful for all devices just below the input component
   const marginTop = (distanceFromTop * 30) / 100 + 160;
-
+  const marginLeft = (distanceFromLeft * 50) / 100 + 100;
+  const width = popoverWidth;
   // select an option-:
   // while selecting an option we need to display the label in input and get value of selected object
   // we basically need to select the complete object.
@@ -46,8 +52,6 @@ const CustomSelectbox = ({
   // handler for selecting single option
 
   function handleSelectSingleOption(option) {
-    console.log("clicked");
-    console.log(option);
     setSelectedOption(option);
     // close option as selected
     setIsPopoverOpen(false);
@@ -55,9 +59,10 @@ const CustomSelectbox = ({
 
   //  clear selected value from input if backspace is pressed-:
   function clearInputOnKeyPress(e) {
+    console.log(e.key);
     if (e.key === "Backspace" || e.key === "Delete") {
       // instead of setting it to null we just make it an object.
-      setSelectedOption({ ...selectedOption, label: "" });
+      setSelectedOption({ ...selectedOption, label: "", value: "" });
       setTypedValue({ ...typedValue, label: "", value: "" });
     }
   }
@@ -75,7 +80,7 @@ const CustomSelectbox = ({
   // make the input searchable
 
   function filterOptionsOnSearch(e) {
-    const originData = [...allOptions]
+    const originData = [...allOptions];
     setAllOptions((data) => {
       const inputValue = e.target.value.trim().toLowerCase(); // Trim and lowercase input value
 
@@ -109,43 +114,49 @@ const CustomSelectbox = ({
     });
   }
 
- 
-  console.log(allOptions);
   return (
     <>
-      <section>
-        <Popover
-          isOpen={isPopoverOpen}
-          positions={["bottom"]} // preferred positions by priority
-          content={
-            <PopoverContent
-              marginTop={marginTop}
-              options={allOptions}
-              handleSelectSingleOption={handleSelectSingleOption}
-            />
-          }
-        >
-          <InputWrapper
-            onFocus={() => setIsPopoverOpen(true)}
-            // onBlur={() => setIsPopoverOpen(false)}
-            divRef={divref}
-            value={selectedOption?.value}
-            onKeyDown={clearInputOnKeyPress}
-            typedValue={typedValue}
-            setTypedValue={setTypedValue}
-            isSearchable={isSearchable}
-            handleTypedValue={handleTypedValue}
-            onSearch={filterOptionsOnSearch}
+      <Popover
+        align="center"
+        isOpen={isPopoverOpen}
+        positions={["bottom"]} // preferred positions by priority
+        content={
+          <PopoverContent
+            width={width}
+            marginTop={marginTop}
+            marginLeft={marginLeft}
+            options={allOptions}
+            handleSelectSingleOption={handleSelectSingleOption}
           />
-        </Popover>
-      </section>
+        }
+      >
+        <InputWrapper
+          onFocus={() => setIsPopoverOpen(true)}
+          // onBlur={() => setIsPopoverOpen(false)}
+          divRef={divref}
+          value={selectedOption?.value}
+          onKeyDown={clearInputOnKeyPress}
+          typedValue={typedValue}
+          setTypedValue={setTypedValue}
+          isSearchable={isSearchable}
+          handleTypedValue={handleTypedValue}
+          onSearch={filterOptionsOnSearch}
+        />
+      </Popover>
     </>
   );
 };
 
 export default CustomSelectbox;
 
-function PopoverContent({ marginTop, options, handleSelectSingleOption }) {
+function PopoverContent({
+  marginTop,
+  marginLeft,
+  width,
+  options,
+  handleSelectSingleOption,
+}) {
+  console.log(width);
   return (
     <>
       <section
@@ -153,10 +164,12 @@ function PopoverContent({ marginTop, options, handleSelectSingleOption }) {
           display: "flex",
           justifyContent: "center",
           alignContent: "center",
+          alignItems: "center",
           marginTop: `${marginTop}px`,
+          marginLeft: `${width}px`,
         }}
       >
-        <div className={styles.popper_content}>
+        <div style={{ width: `${width}px` }} className={styles.popper_content}>
           <div className={styles.options_wrapper}>
             {options.map((option) => {
               return (
@@ -188,7 +201,6 @@ function InputWrapper({
   handleTypedValue,
   onSearch,
 }) {
-  console.log(typedValue);
   return (
     <>
       <div ref={divRef} className={selectstyles.input_wrapper}>
