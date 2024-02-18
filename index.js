@@ -47,12 +47,41 @@ const handler2 = () => {};
 //   .catch((err) => console.log(err));
 
 // readingFile().then((data) => {
-  
+
 // const functionFound = data.match('function');
 // console.log(functionFound);
 // // console.log(data[functionFound])
 // }).catch((err) => console.log(err));
 
+// const multiplePromises =  Promise.all([myPromise('jay shree ram',handler1,handler2),readingFile()]);
+// console.log(multiplePromises.then((d)=>console.log(d)))
 
-const multiplePromises =  Promise.all([myPromise('jay shree ram',handler1,handler2),readingFile()]);
-console.log(multiplePromises.then((d)=>console.log(d)))
+// custom push method-:
+//  push only returns new length of array
+Array.prototype.myPush = function (...arr) {
+  for (let i = 0; i < arr.length; i++) {
+    this[this.length] = arr.length;
+  }
+  return this.length;
+};
+
+const arr = [20];
+// console.log(arr.myPush(10,30,40));
+
+// custom pop method-:
+
+// pop removes the last element from array
+// returns the removed element
+
+Array.prototype.myPop = function () {
+  //  get last element
+  let lastElem = this[this.length - 1];
+  //  reduce length of array
+  this.length = this.length - 1;
+  return lastElem;
+};
+
+const x = [10, 20, 30];
+console.log(x.myPop());
+
+console.log(x); // new updated array

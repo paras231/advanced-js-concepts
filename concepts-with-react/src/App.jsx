@@ -16,6 +16,7 @@ import BottomNavigation from "./advancedUi/BottomNavigation";
 import PopperComponent from "./advancedUi/PopperComponent";
 import CustomSelectbox from "./advancedUi/CustomSelectbox";
 import WrapperSelectBox from "./advancedUi/WrapperSelectBox";
+import Animatedcards,{CardGrid} from "./animatedUi/Animatedcards";
 
 const App = () => {
   return (
@@ -32,7 +33,7 @@ const App = () => {
         <BrowserRouter>
           <Routes>
             {/* <Route path="/" element={<StoreStateUrl/>}/> */}
-            <Route path="/" element={<WrapperSelectBox />} />
+            <Route path="/" element={<Animatedcards />} />
           </Routes>
         </BrowserRouter>
         </div>
