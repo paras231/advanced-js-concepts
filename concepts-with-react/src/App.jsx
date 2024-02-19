@@ -17,7 +17,7 @@ import PopperComponent from "./advancedUi/PopperComponent";
 import CustomSelectbox from "./advancedUi/CustomSelectbox";
 import WrapperSelectBox from "./advancedUi/WrapperSelectBox";
 import Animatedcards,{CardGrid} from "./animatedUi/Animatedcards";
-
+import CustomPagination from "./advancedUi/CustomPagination";
 const App = () => {
   return (
     <>
@@ -29,11 +29,11 @@ const App = () => {
         {/* <Banner /> */}
         {/* <Sidebar routes={routes}/> */}
         {/* <ReactportalComponent/> */}
-        <div className="flex items-center justify-center mt-40">
+        <div className="p-10">
         <BrowserRouter>
           <Routes>
             {/* <Route path="/" element={<StoreStateUrl/>}/> */}
-            <Route path="/" element={<Animatedcards />} />
+            <Route path="/" element={<CustomPagination />} />
           </Routes>
         </BrowserRouter>
         </div>
