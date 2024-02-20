@@ -1,5 +1,5 @@
 // higher order functions-:
-import fs from 'fs';
+import fs from "fs";
 export function hof() {
   return function innerFunc() {
     return ["HELLO WORLD"];
@@ -51,10 +51,9 @@ export function myPromise(str, ...handlers) {
     if (str && str.length < 5) {
       reject("String can not be taken as valid string");
     }
-    
+
     let allHandlers = [];
     for (const handler of handlers) {
-      
       if (typeof handler !== "function") {
         reject("handler must be function");
       }
@@ -66,15 +65,35 @@ export function myPromise(str, ...handlers) {
 
 // readfile
 
-export function readingFile(){
-  return new Promise((resolve,reject)=>{
-    fs.readFile('interview.js','utf-8',(err,data)=>{
-      if(err){
+export function readingFile() {
+  return new Promise((resolve, reject) => {
+    fs.readFile("interview.js", "utf-8", (err, data) => {
+      if (err) {
         reject(err);
       }
       resolve(data);
-    })
-  })
+    });
+  });
 }
 
+//  writing file
+
+// we first need to check if a file exists it does not exist , we need to create this-:
+
+export function createOrReadFile() {
+  return new Promise((resolve, reject) => {
+    fs.readFile("test.js", "utf-8", (err, data) => {
+      if (err) {
+        // err happened and file is not available create the file
+        fs.writeFile("test.js", "function fetchFile(){}", (err) => {
+          if (err) {
+            reject("Error creating file");
+          }
+          resolve("File created");
+        });
+      }
+      resolve(data);
+    });
+  });
+}
 

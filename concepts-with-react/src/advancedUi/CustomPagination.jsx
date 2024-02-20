@@ -38,7 +38,7 @@ const CustomPagination = () => {
         totalPages={totalNumOfPages}
         middlePages={middlePages}
         jumpToPage={jumpToPage}
-        showMiddlePages={false}
+        showMiddlePages={true}
       />
     </>
   );

@@ -12,7 +12,10 @@ import {
   proxyObjectLearning,
   myPromise,
   readingFile,
+  createOrReadFile,
 } from "./function_script.js";
+// import lodash methods-:
+import { lodashArrayMethods } from "./lodash.js";
 // const userNames = iterateThroughNames();
 
 // // console.log(userNames);
@@ -84,4 +87,17 @@ Array.prototype.myPop = function () {
 const x = [10, 20, 30];
 console.log(x.myPop());
 
-console.log(x); // new updated array
+// console.log(x); // new updated array
+
+// createOrReadFile().then((data)=>console.log(data)).catch((err)=>console.log(err));
+
+const compactValue = lodashArrayMethods._compact([1, 2, 3, 5, 0]);
+// console.log(compactValue);
+const differ = lodashArrayMethods._difference([2, 1, 4, 5, 6, 3], [2, 3]);
+// console.log(differ);
+
+const dropped = lodashArrayMethods._dropRight([1, 2, 3, 4, 5], 2);
+// console.log(dropped);
+
+const pulledValue = lodashArrayMethods._pullAt([1, 2, 3, 4, 7, 8, 5], [2,3]);
+console.log(pulledValue);
