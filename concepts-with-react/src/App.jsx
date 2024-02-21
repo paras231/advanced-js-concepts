@@ -16,9 +16,21 @@ import BottomNavigation from "./advancedUi/BottomNavigation";
 import PopperComponent from "./advancedUi/PopperComponent";
 import CustomSelectbox from "./advancedUi/CustomSelectbox";
 import WrapperSelectBox from "./advancedUi/WrapperSelectBox";
-import Animatedcards,{CardGrid} from "./animatedUi/Animatedcards";
+import Animatedcards, { CardGrid } from "./animatedUi/Animatedcards";
 import CustomPagination from "./advancedUi/CustomPagination";
+import TabComponent from "./advancedUi/TabComponent";
+
 const App = () => {
+  const tabData = [
+    {
+      label: "Tab 1",
+      content: " content one",
+    },
+    {
+      label: "Tab 2",
+      content: " content two",
+    },
+  ];
   return (
     <>
       {/* <ScrollDown/> */}
@@ -30,14 +42,24 @@ const App = () => {
         {/* <Sidebar routes={routes}/> */}
         {/* <ReactportalComponent/> */}
         <div className="p-10">
-        <BrowserRouter>
-          <Routes>
-            {/* <Route path="/" element={<StoreStateUrl/>}/> */}
-            <Route path="/" element={<CustomPagination />} />
-          </Routes>
-        </BrowserRouter>
+          <BrowserRouter>
+            <Routes>
+              {/* <Route path="/" element={<StoreStateUrl/>}/> */}
+              <Route
+                path="/"
+                element={
+                  <TabComponent
+                    activeTabClassName={
+                      " underline   p-2 rounded-md cursor-pointer"
+                    }
+                    tabData={tabData}
+                    activeBg={"purple"}
+                  />
+                }
+              />
+            </Routes>
+          </BrowserRouter>
         </div>
-        
       </main>
     </>
   );
