@@ -16,6 +16,9 @@ import {
 } from "./function_script.js";
 // import lodash methods-:
 import { lodashArrayMethods } from "./lodash.js";
+
+// import dsa files
+import Stack, { TextEditor } from "./dsa/stack.js";
 // const userNames = iterateThroughNames();
 
 // // console.log(userNames);
@@ -99,5 +102,26 @@ const differ = lodashArrayMethods._difference([2, 1, 4, 5, 6, 3], [2, 3]);
 const dropped = lodashArrayMethods._dropRight([1, 2, 3, 4, 5], 2);
 // console.log(dropped);
 
-const pulledValue = lodashArrayMethods._pullAt([1, 2, 3, 4, 7, 8, 5], [2,3]);
-console.log(pulledValue);
+const pulledValue = lodashArrayMethods._pullAt([1, 2, 3, 4, 7, 8, 5], [2, 3]);
+// console.log(pulledValue);
+
+const editor = new TextEditor();
+
+const operation1 = {
+  type: "typing",
+  data: "hello world",
+};
+
+const operation2 = {
+  type: "deletion",
+  data: "some code removed",
+};
+
+editor.addOperation(operation1);
+editor.addOperation(operation2);
+
+// console.log(editor.getOperations());
+
+//  undo some of the changes
+editor.undoOperation();
+console.log(editor.getOperations());
