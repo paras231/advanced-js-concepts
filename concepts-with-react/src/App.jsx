@@ -19,7 +19,8 @@ import WrapperSelectBox from "./advancedUi/WrapperSelectBox";
 import Animatedcards, { CardGrid } from "./animatedUi/Animatedcards";
 import CustomPagination from "./advancedUi/CustomPagination";
 import TabComponent from "./advancedUi/TabComponent";
-
+import TicTacToe from "./games/TicTacToe";
+import Elements from "./dragandDrop/Elements";
 const App = () => {
   const tabData = [
     {
@@ -45,18 +46,7 @@ const App = () => {
           <BrowserRouter>
             <Routes>
               {/* <Route path="/" element={<StoreStateUrl/>}/> */}
-              <Route
-                path="/"
-                element={
-                  <TabComponent
-                    activeTabClassName={
-                      " underline   p-2 rounded-md cursor-pointer"
-                    }
-                    tabData={tabData}
-                    activeBg={"purple"}
-                  />
-                }
-              />
+              <Route path="/" element={<Elements />} />
             </Routes>
           </BrowserRouter>
         </div>

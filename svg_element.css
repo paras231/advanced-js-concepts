@@ -1,0 +1,24 @@
+body{
+    /* background: purple;
+    display: flex;
+    justify-content: center;
+    align-items: center; */
+}
+
+svg{
+    margin-top: 20vh;
+}
+
+.hand {
+    stroke: #ffffff;
+    stroke-width: 2;
+    stroke-linecap: round;
+  }
+  
+  .hand--thick {
+    stroke-width: 7;
+  }
+  
+  .hand--second {
+    stroke: yellow;
+  }

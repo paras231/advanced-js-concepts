@@ -16,9 +16,22 @@ import {
 } from "./function_script.js";
 // import lodash methods-:
 import { lodashArrayMethods } from "./lodash.js";
-
+import {
+  getPairsOfNum,
+  findPalindrome,
+  twoSum,
+  find3Sum,
+  removeDuplicates,
+  moveZeros,
+} from "./loops_script.js";
 // import dsa files
 import Stack, { TextEditor } from "./dsa/stack.js";
+import polyfill from "./polyfils.js";
+import {
+  fizzBuzz,
+  calculateFatorial,
+  objectTarget,
+} from "./function_script.js";
 // const userNames = iterateThroughNames();
 
 // // console.log(userNames);
@@ -88,7 +101,7 @@ Array.prototype.myPop = function () {
 };
 
 const x = [10, 20, 30];
-console.log(x.myPop());
+// console.log(x.myPop());
 
 // console.log(x); // new updated array
 
@@ -124,4 +137,27 @@ editor.addOperation(operation2);
 
 //  undo some of the changes
 editor.undoOperation();
-console.log(editor.getOperations());
+// console.log(editor.getOperations());
+
+const numPairs = getPairsOfNum([10, 20, 25, 40], 45);
+
+// console.log(numPairs);
+
+// console.log(findPalindrome('baba'));
+
+// console.log(twoSum([10,20,34],5));
+// console.log(find3Sum([-1, 0, 1, 2, -1, -4]));
+
+// console.log(removeDuplicates([0,  1, 1, 1, 2, 2, 3, 3, 4]));
+// console.log(moveZeros([0, 1, 0, 3, 12]))
+
+// polyfill();
+
+// fizzBuzz();
+
+// calculateFatorial(5);
+
+const targetObj = objectTarget({ user: "Paras", age: 23 }, "age", {
+  lang: "JS",
+});
+console.log(targetObj);

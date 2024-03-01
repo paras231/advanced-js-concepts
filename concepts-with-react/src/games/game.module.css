@@ -1,0 +1,151 @@
+.board {
+  width: 30vw;
+  height: 50%;
+  background-color: purple;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 5px;
+  border-radius: 5px;
+  /* justify-content: space-around; */
+}
+
+.board > * {
+  flex-basis: calc(
+    33.33% - 10px
+  ); /* Three inputs per row with 5px padding on each side */
+  /* Adjust margin as needed */
+  box-sizing: border-box;
+}
+
+input {
+  width: 5vw;
+  height: 10vh;
+  /* height: 33.33%; */
+  /* border-top-right-radius: 4px; */
+
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  flex-wrap: wrap;
+  font-style: italic;
+}
+
+.input_1 {
+  border-right: whitesmoke dashed;
+  border-top: none;
+  border-left: none;
+  border-bottom: whitesmoke dashed;
+}
+.input_1:focus {
+  outline: none;
+  border-top: none;
+  /* border-bottom: none; */
+}
+
+.input_2 {
+  border-right: whitesmoke dashed;
+  border-top: none;
+  border-left: none;
+  border-bottom: whitesmoke dashed;
+}
+
+.input_2:focus {
+  outline: none;
+  border-top: none;
+  /* border-bottom: none; */
+}
+
+.input_3 {
+  border-left: whitesmoke dashed;
+  border-bottom: whitesmoke dashed;
+  border-top: none;
+  border-right: none;
+}
+
+.input_3:focus {
+  outline: none;
+  border-top: none;
+}
+
+.input_4 {
+  border-right: whitesmoke dashed;
+  border-top: none;
+  border-left: none;
+  border-bottom: whitesmoke dashed;
+}
+
+.input_4:focus {
+  outline: none;
+  border-top: none;
+}
+
+.input_5 {
+  border-right: whitesmoke dashed;
+  border-top: none;
+  border-left: none;
+  border-bottom: whitesmoke dashed;
+}
+
+.input_5:focus {
+  outline: none;
+  border-top: none;
+}
+
+.input_6 {
+  border-left: whitesmoke dashed;
+  border-bottom: whitesmoke dashed;
+  border-top: none;
+  border-right: none;
+}
+
+.input_6:focus {
+  outline: none;
+  border-top: none;
+}
+
+.input_7 {
+  border-top: whitesmoke dashed;
+  border-right: whitesmoke dashed;
+  border-bottom: none;
+  border-left: none;
+}
+
+.input_7:focus {
+  outline: none;
+  border-bottom: none;
+  border-left: none;
+}
+
+.input_8 {
+  border-top: whitesmoke dashed;
+  border-left: whitesmoke dashed;
+  border-right: whitesmoke dashed;
+  border-bottom: none;
+}
+
+.input_8:focus {
+  outline: none;
+  border-top: whitesmoke dashed;
+  border-left: whitesmoke dashed;
+  border-right: whitesmoke dashed;
+  border-bottom: none;
+}
+
+.input_9 {
+  border-top: whitesmoke dashed;
+  border-left: whitesmoke dashed;
+  border-bottom: none;
+  border-right: none;
+}
+
+.input_9:focus{
+    outline: none;
+    border-top: whitesmoke dashed;
+    border-left: whitesmoke dashed;
+    border-bottom: none;
+    border-right: none;
+}

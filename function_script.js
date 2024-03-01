@@ -97,3 +97,51 @@ export function createOrReadFile() {
   });
 }
 
+// function FizzBuzz
+
+// print
+
+export function fizzBuzz() {
+  for (let i = 1; i <= 100; i++) {
+    if (i % 3 === 0) {
+      console.log("Fizz");
+    } else if (i % 5 === 0) {
+      console.log("Buzz");
+    } else if (i % 3 === 0 && i % 5 === 0) {
+      console.log("FizzBuzz");
+    } else {
+      console.log(i);
+    }
+  }
+}
+
+//  calculate fatorial of given number-:
+
+export function calculateFatorial(n) {
+  if (n < 1) {
+    return "num should be positive";
+  }
+  let factorial = 1;
+  for (let i = 1; i <= n; i++) {
+    factorial *= i;
+  }
+  return factorial;
+}
+
+// create a function which accepts an object and a target and key and check if object has that target key and returns the value of that target key
+//  this function should return  a plain object
+export function objectTarget(object, key, target) {
+  // handle errors;
+  if (!object || !key || !target) return "all parameters are required";
+  if (typeof object !== "object")
+    throw new Error(`expected an object but got ${typeof object}`);
+  if (typeof key !== "string") throw new Error("Key must be a string");
+  if (typeof target !== "object") throw new Error("Target must be an object");
+  if (object.hasOwnProperty(key)) {
+    return { ...object, ...target };
+  }else{
+    return 'Key did not exist'
+  }
+}
+
+// 
