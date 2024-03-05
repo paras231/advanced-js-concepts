@@ -139,9 +139,67 @@ export function objectTarget(object, key, target) {
   if (typeof target !== "object") throw new Error("Target must be an object");
   if (object.hasOwnProperty(key)) {
     return { ...object, ...target };
-  }else{
-    return 'Key did not exist'
+  } else {
+    return "Key did not exist";
   }
 }
 
-// 
+// string base questions for interview practice.
+
+// reverse a string-:
+// approach
+/**
+ * first we need to convert string into array
+ * then reverse that array
+ * and convert that array back into string
+ */
+export function reverseString(str) {
+  let output = "";
+  let reversedArr = [];
+  //  iterate through string in reverse loop  (very important)
+  for (let index = str.length - 1; index >= 0; --index) {
+    reversedArr.push(str[index]);
+  }
+  output = reversedArr.join("");
+  return output;
+}
+
+/**
+  check if a string is palindrom or not,
+  first we need to reverse the string,
+  and compare with actual input string
+ */
+
+export function checkForPalindrom(str) {
+  let reversedStr = "";
+  let reversedStrArr = [];
+  for (let index = str.length - 1; index >= 0; --index) {
+    reversedStrArr.push(str[index]);
+  }
+  reversedStr = reversedStrArr.join("");
+  if (reversedStr === str) {
+    return true;
+  }
+  return false;
+}
+
+/**
+ * string compression method
+ * check if a string has repeating characters
+ * if there are repeating characters,
+ * replace those characters with their counts
+ * */
+
+export function stringComp(str) {
+  let compressedStr = "";
+  let charCount = 0;
+  
+  let strObj = {};
+  for (let i = 0; i < str.length; i++) {
+    if(str[i] == str[i+1]){
+     charCount ++;
+     strObj[str[i]] = charCount;
+    }
+  }
+  return strObj;
+}

@@ -32,6 +32,7 @@ import {
   calculateFatorial,
   objectTarget,
 } from "./function_script.js";
+import { reverseString,checkForPalindrom ,stringComp} from "./function_script.js";
 // const userNames = iterateThroughNames();
 
 // // console.log(userNames);
@@ -160,4 +161,55 @@ const numPairs = getPairsOfNum([10, 20, 25, 40], 45);
 const targetObj = objectTarget({ user: "Paras", age: 23 }, "age", {
   lang: "JS",
 });
-console.log(targetObj);
+// console.log(targetObj);
+
+// console.log(b,'value of b')
+
+// var b;
+// console.log(b,'value of b after declaration');
+// b = 20;
+
+// console.log(b);
+
+// setTimeout(() => {
+//   console.log("print timeout");
+// });
+
+// console.log("print start");
+
+
+// const mycbFunc = (cb)=>{
+//   cb();
+// }
+
+// mycbFunc(()=>{console.log('my cb func');})
+
+// new Promise((resolve, reject) => {
+//   resolve("promise resolved");
+// })
+//   .then((data) => console.log(data))
+//   .catch((eror) => console.log(eror));
+
+// const asyncValue = async (cb) => {
+//   cb();
+// };
+
+// asyncValue(() => {
+//   console.log("async value");
+// });
+
+// console.log("print end");
+
+
+// const reversedStr = reverseString('paras')
+// console.log(reversedStr);
+
+// const palind =  checkForPalindrom('paras');
+
+// console.log(palind);
+
+// const anagram  =  checkIfAnagram('lolc','lola');
+// console.log(anagram);
+
+const compStr = stringComp("aabcccccaaa");
+console.log(compStr);
