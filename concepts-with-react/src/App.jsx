@@ -21,6 +21,7 @@ import CustomPagination from "./advancedUi/CustomPagination";
 import TabComponent from "./advancedUi/TabComponent";
 import TicTacToe from "./games/TicTacToe";
 import Elements from "./dragandDrop/Elements";
+import FileUploader from "./dragandDrop/FileUploader";
 const App = () => {
   const tabData = [
     {
@@ -46,7 +47,7 @@ const App = () => {
           <BrowserRouter>
             <Routes>
               {/* <Route path="/" element={<StoreStateUrl/>}/> */}
-              <Route path="/" element={<Elements />} />
+              <Route path="/" element={<FileUploader />} />
             </Routes>
           </BrowserRouter>
         </div>
