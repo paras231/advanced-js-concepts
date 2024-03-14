@@ -193,13 +193,107 @@ export function checkForPalindrom(str) {
 export function stringComp(str) {
   let compressedStr = "";
   let charCount = 0;
-  
+
   let strObj = {};
   for (let i = 0; i < str.length; i++) {
-    if(str[i] == str[i+1]){
-     charCount ++;
-     strObj[str[i]] = charCount;
+    if (str[i] == str[i + 1]) {
+      charCount++;
+      strObj[str[i]] = charCount;
     }
   }
   return strObj;
+}
+
+/**
+ * flatten a multi-dimensional array into a single array
+ * @param {Array} array
+ * @param {Number} depth
+ * @returns {Array}
+ * */
+
+// this problem can be solved using recursion.
+export function flattenArray(array, depth) {
+  let result = [];
+  if (array.length === 0 || depth === 0) {
+    return result;
+  }
+
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] instanceof Array) {
+      // console.log(array[i])
+      const elements = flattenArray(array[i], depth - 1);
+      result.push(...elements);
+    } else {
+      result.push(array[i]);
+    }
+  }
+  return result;
+}
+
+/**
+ * factorial calculation using recursion
+ * @param {Number} number
+ * @returns {Number} number
+ */
+
+export function factorial(number) {
+  if (number <= 1) {
+    return 1; // Base case: factorial of 0 and 1 is 1
+  } else {
+    return number * factorial(number - 1); // Recursive case
+  }
+}
+
+/**
+ * create a Fibonacci sequence from a given number
+ * @param {Number} number
+ * @returns {Number} num
+ */
+
+export function fibonacci(number) {
+  if (number < 1) return;
+  else {
+    return fibonacci(number - 1) + fibonacci(number - 2);
+  }
+}
+
+/**
+ * find maximum number in an array
+ * the array should be sorted
+ * @param {Array} array
+ * @returns {number} maximum number
+ */
+
+export function findMaxNumber(array) {
+  const sorted_array = array.sort((a, b) => a - b);
+  return sorted_array[sorted_array.length - 1];
+}
+
+/**
+ * find some of all elements in array
+ * @param {Array} array
+ * @return {Number} sum of elements
+ */
+
+export function sumOfElements(array) {
+  let sum = 0;
+  for (let index = 0; index < array.length; index++) {
+    sum += array[index];
+  }
+  return sum;
+}
+
+/**
+ * remove duplicates from array
+ * @param {Array} array to remove duplicates from
+ * @return {Array} array with duplicates removed
+ */
+
+export function removeDuplicates(array) {
+  for (let index = 0; index < array.length; index++) {
+    if (array[index] == array[index + 1]) {
+      array.splice(index, 1);
+    }
+  }
+  return array;
 }

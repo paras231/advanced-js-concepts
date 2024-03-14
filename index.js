@@ -21,7 +21,7 @@ import {
   findPalindrome,
   twoSum,
   find3Sum,
-  removeDuplicates,
+  // removeDuplicates,
   moveZeros,
 } from "./loops_script.js";
 // import dsa files
@@ -31,8 +31,18 @@ import {
   fizzBuzz,
   calculateFatorial,
   objectTarget,
+  flattenArray,
+  factorial,
+  fibonacci,
 } from "./function_script.js";
-import { reverseString,checkForPalindrom ,stringComp} from "./function_script.js";
+import {
+  reverseString,
+  checkForPalindrom,
+  stringComp,
+  findMaxNumber,
+  sumOfElements,
+  removeDuplicates
+} from "./function_script.js";
 // const userNames = iterateThroughNames();
 
 // // console.log(userNames);
@@ -177,7 +187,6 @@ const targetObj = objectTarget({ user: "Paras", age: 23 }, "age", {
 
 // console.log("print start");
 
-
 // const mycbFunc = (cb)=>{
 //   cb();
 // }
@@ -200,7 +209,6 @@ const targetObj = objectTarget({ user: "Paras", age: 23 }, "age", {
 
 // console.log("print end");
 
-
 // const reversedStr = reverseString('paras')
 // console.log(reversedStr);
 
@@ -212,4 +220,23 @@ const targetObj = objectTarget({ user: "Paras", age: 23 }, "age", {
 // console.log(anagram);
 
 const compStr = stringComp("aabcccccaaa");
-console.log(compStr);
+// console.log(compStr);
+
+// const flatten =  flattenArray([[1,2],[2,3,[4,5,[7,8]]]],5);
+// console.log(flatten)
+
+const factorialValue = factorial(5);
+// console.log(factorialValue);
+
+// const fibonacciSeries =  fibonacci(5);
+// console.log(fibonacci);
+
+// const max_num = findMaxNumber([20,36,18,29,56,34,45,98]);
+// console.log(max_num);
+
+// const sum = sumOfElements([10,20,30,5.5]);
+// console.log(sum);
+
+
+const removed_duplicates = removeDuplicates([10,20,20,35,45]);
+console.log(removed_duplicates);
