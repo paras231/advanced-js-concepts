@@ -297,3 +297,144 @@ export function removeDuplicates(array) {
   }
   return array;
 }
+
+
+/**
+ * count vowels in a string
+ * @param {String} string
+ * @return {Number} count
+ */
+
+export function countVowels(string) {
+  if(!string){
+     return 0   ;
+  }
+    let vowels =['a','e','i','o','u'];
+    let counter = 0;
+     for (let index = 0; index < string.length; index++) {
+           if(vowels.includes(string[index])) {
+              counter++;
+           }
+     } 
+     return counter;
+}
+
+/**
+ * count number of words in a string
+ * @param {String} string
+ * @return {Number} number
+ */
+
+export function countWords(string) {
+  if(!string) return 0;
+  string =  string.split(' ');
+  return string.length;
+}
+
+/**
+ * find longest word in a string
+ * @param {String} string
+ * @return {String} string
+ */
+
+export function longestWord(string){
+  if(!string) return 0;
+  string =  string.split(' ');
+  let longest_word = '';
+  let longest_length = 0;
+  for(let index = 0; index<string.length; index++){
+     if(string[index].length>longest_length){
+         longest_word = string[index];
+         longest_length =  string[index].length;
+     } 
+  }
+  return longest_word;
+}
+
+/**
+ * convert each character of a sentence to upper case
+ * @param {string} sentence
+ * @return {string} sentence
+ */
+
+export function convertToUppercase(sentence){
+  sentence = sentence.split(' ');
+  let converted_sentence = '';
+  for(let i=0; i<sentence.length; i++){
+      
+      sentence[i] = sentence[i].charAt(0).toUpperCase() + sentence[i].slice(1);
+  }
+  console.log(sentence);
+  converted_sentence = sentence.join(' ');
+  return converted_sentence;
+}
+
+/**
+ * reverse words from sentence
+ * @param {string} sentence
+ * @return {string} reverse words
+ */
+
+export function reverseWordsFromSentence(sentence){
+  sentence =  sentence.split(' ');
+  for(let index=0 ; index<sentence.length; index++){
+     let reversed_val = '';
+      for(let j = sentence[index].length-1; j>=0; j--){
+           reversed_val += sentence[index][j];
+      }
+      sentence[index] = reversed_val;
+  }
+ return  sentence.join(" ");
+}
+
+/**
+ * sort array of objects by property
+ * this only works for number properties
+ */
+export function sortArrayofObjectByProperty(array,property){
+  let sorted_arr = [];
+ 
+  for(let i = 0; i<array.length; i++){
+      // check if property exists in object
+      if(array[i].hasOwnProperty(property)){
+          sorted_arr.push(array[i]);
+      }
+  }
+  return sorted_arr.sort((a,b)=>a[property]-b[property]);
+  
+}
+
+/**
+ * count occurrences of elements in array
+ * @param {Array} array
+ * @param  property
+ * @return {Number} count
+ */
+
+
+export function countOccourence(elements,val){
+  let counter = 0;
+ 
+  for(let i = 0; i<elements.length; i++){
+      if(val==elements[i]){
+          counter++;
+      }
+  }
+  return counter;
+}
+
+/**
+ * find sum of array elements
+ * @param {Array} array
+ * @return {Number} sum of array elements
+ */
+
+export function findAvg(array){
+  let avg = 0;
+  let sum =0;
+  for(let i = 0; i<array.length; i++){
+      sum += array[i];
+  }
+  avg = sum/array.length;
+  return avg;
+}

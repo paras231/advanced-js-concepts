@@ -41,7 +41,8 @@ import {
   stringComp,
   findMaxNumber,
   sumOfElements,
-  removeDuplicates
+  removeDuplicates,
+  countVowels,
 } from "./function_script.js";
 // const userNames = iterateThroughNames();
 
@@ -56,7 +57,7 @@ import {
 // const pairs = pairUserByAges();
 // console.log(pairs);
 
-const values = hof()();
+// const values = hof()();
 //  console.log(values);
 
 // hosting();
@@ -239,4 +240,9 @@ const factorialValue = factorial(5);
 
 
 const removed_duplicates = removeDuplicates([10,20,20,35,45]);
-console.log(removed_duplicates);
+// console.log(removed_duplicates);
+
+
+const vowels_counter = countVowels('origin');
+
+console.log(vowels_counter);
