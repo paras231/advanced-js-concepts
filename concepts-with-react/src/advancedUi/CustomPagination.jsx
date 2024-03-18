@@ -55,10 +55,17 @@ export const PaginationComponent = ({
   middlePages,
   jumpToPage,
   showMiddlePages,
+  className,
 }) => {
   return (
     <>
-      <div className="flex h-[60vh] overflow-y-scroll flex-col gap-4 px-2 py-2">
+      <div
+        className={`${
+          className
+            ? className
+            : "flex h-[60vh] overflow-y-scroll flex-col gap-4 px-2 py-2"
+        }`}
+      >
         {items?.map((item) => {
           return <li key={item.id}>{item.body}</li>;
         })}
@@ -81,11 +88,15 @@ export const PaginationComponent = ({
   );
 };
 
-const PageButton = ({ clickEvent, title }) => {
+const PageButton = ({ clickEvent, title, className }) => {
   return (
     <>
       <button
-        className="text-white bg-purple-500 rounded-md border-none outline-none px-2 py-2 cursor-pointer"
+        className={`$${
+          className
+            ? className
+            : "text-white bg-purple-500 rounded-md border-none outline-none px-2 py-2 cursor-pointer"
+        }`}
         onClick={clickEvent}
       >
         {title}
@@ -94,12 +105,24 @@ const PageButton = ({ clickEvent, title }) => {
   );
 };
 
-const DisplayMiddlePages = ({ middlePages, jumpToPage }) => {
+const DisplayMiddlePages = ({ middlePages, jumpToPage, className }) => {
   return (
     <>
       <div className="flex gap-3">
         {middlePages.map((page) => {
-          return <button key={page} className="bg-transparent rounded-md border-none outline-none cursor-pointer" onClick={() => jumpToPage(page)}>{page}</button>;
+          return (
+            <button
+              key={page}
+              className={`${
+                className
+                  ? className
+                  : "bg-transparent rounded-md border-none outline-none cursor-pointer"
+              }`}
+              onClick={() => jumpToPage(page)}
+            >
+              {page}
+            </button>
+          );
         })}
       </div>
     </>

@@ -438,3 +438,49 @@ export function findAvg(array){
   avg = sum/array.length;
   return avg;
 }
+
+
+/**
+ * convert a number into roman numerical
+ * @param {Number} num
+ * @return {String} roman string
+ */
+
+
+export function intToRoman(num){
+  const romanNumericals = [
+      {
+          value:1000,
+          symbol:"M"
+      },
+      {
+          value:500,
+          symbol:"D"
+      },
+      {
+          value:100,
+          symbol:"C"
+      },
+      {
+          value:50,
+          symbol:"L"
+      },
+      {
+          value:10,
+          symbol:"X"
+      },
+      {
+          value:1,
+          symbol:"I"
+      }
+      ];
+      let result = '';
+      for(let i =0; i<romanNumericals.length;i++){
+          
+          while(num>= romanNumericals[i].value){
+              result += romanNumericals[i].symbol;
+              num -= romanNumericals[i].value;
+          }
+      }
+      return result;
+}

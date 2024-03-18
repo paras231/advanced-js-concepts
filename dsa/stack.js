@@ -83,3 +83,69 @@ export class TextEditor {
     return this.operations;
   }
 }
+
+
+// problems using stack Data structure
+
+/**
+ * reverse a string using stack
+ * @param {String} string
+ * @return {String} string
+ */
+
+export function reverseStringUsingStack(string) {
+  const stack = [];
+  const reversedStack = [];
+  
+  for (let index = 0; index < string.length; index++) {
+        stack.push(string[index]);
+  }
+ 
+  
+  while(stack.length>0){
+      const val = stack.pop();
+      reversedStack.push(val);
+  }
+ 
+  return reversedStack.join('');
+}
+
+/**
+ * evaluate post fix expression
+ * @param {String} expression
+ * @return {Number} number
+ */
+
+function evalutationPostFixExpression(expression){
+  const stack = [];
+  const tokens  = expression.split(' ');
+  for(let i =0; i<tokens.length; i++){
+      // check if token is a number
+      //  if it is a number then push into stack
+      if(!isNaN(parseFloat(tokens[i]))){
+          stack.push(Number(tokens[i]));
+      }else{
+          const operand1 = stack.pop();
+          const operand2 = stack.pop();
+          if(tokens[i]=='+'){
+              stack.push(operand1+operand2);
+          }else if(tokens[i]=='-'){
+              stack.push(operand1-operand2);
+          }else if( tokens[i]=='*'){
+               stack.push(operand1*operand2);
+          }else if(tokens[i]=='/'){
+              stack.push(operand1/operand2);
+          }
+      }
+  }
+  console.log(stack);
+}
+evalutationPostFixExpression("3 4 + 4 *");
+
+
+/**
+ * valid Parentheses
+ * @param {String} expression
+ * @return {Boolean} 
+ */
+
