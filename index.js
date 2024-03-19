@@ -245,4 +245,4 @@ const removed_duplicates = removeDuplicates([10,20,20,35,45]);
 
 const vowels_counter = countVowels('origin');
 
-console.log(vowels_counter);
+// console.log(vowels_counter);
