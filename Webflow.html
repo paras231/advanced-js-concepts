@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Webflow with custom vanilla Javascript</title>
+  </head>
+  <body>
+    <h1>Webflow practice</h1>
+    <div class="flex space-x-4 px-2 py-2">
+      <input
+        placeholder="Type something..."
+        type="text"
+        class="rounded-md bg-slate-200 p-2"
+        id="todo_input"
+      />
+      <button
+        id="add_todo_btn"
+        class="bg-blue-400 font-semibold text-white rounded-md px-2 py-2"
+      >
+        Add TODO
+      </button>
+    </div>
+    <div id="todo_container"></div>
+    <input type="text" id="search_input" placeholder="search posts" />
+    <div id="post-container"></div>
+
+    <!-- script -->
+    <script>
+      const fetchPosts = async () => {
+        try {
+          displayLoader(true);
+          const res = await fetch("https://jsonplaceholder.typicode.com/posts");
+          const data = await res.json();
+
+          displayLoader(false);
+          //   render  dynamic tags after fetching data
+          renderDynamicPosts(data);
+          return data;
+        } catch (error) {
+          console.log(error);
+        }
+      };
+      fetchPosts();
+
+      //   render dynamic posts
+      function renderDynamicPosts(data) {
+        const postContainer = document.getElementById("post-container");
+        const search_input = document.getElementById("search_input");
+
+        // Function to filter posts based on search query
+        function searchPosts(query, data) {
+          return data.filter((post) =>
+            post.title.toLowerCase().includes(query.toLowerCase())
+          );
+        }
+
+        // Event listener for input change in search input
+        search_input.addEventListener("input", function (event) {
+          const query = event.target.value;
+          const filteredData = searchPosts(query, data);
+
+          // Clear existing posts
+          postContainer.innerHTML = "";
+
+          // Render filtered posts
+          filteredData.forEach((post) => {
+            const postElement = document.createElement("div");
+            postElement.innerHTML = `<h1>${post.title}</h1>`;
+            postContainer.appendChild(postElement);
+          });
+        });
+
+        // Initial rendering of all posts
+        data.forEach((post) => {
+          const postElement = document.createElement("div");
+          postElement.innerHTML = `<h1>${post.title}</h1>`;
+          postContainer.appendChild(postElement);
+        });
+      }
+
+      //   display loader
+      function displayLoader(loading) {
+        const postContainer = document.getElementById("post-container");
+
+        // If loading, show loading message
+        if (loading) {
+          // Check if loading element already exists
+          if (!document.getElementById("loading")) {
+            const loadingElem = document.createElement("div");
+            loadingElem.id = "loading";
+            loadingElem.innerHTML = "<h1>Loading...</h1>";
+            postContainer.appendChild(loadingElem);
+          }
+        } else {
+          // If not loading, remove loading message if exists
+          const loadingElem = document.getElementById("loading");
+          if (loadingElem) {
+            postContainer.removeChild(loadingElem);
+          }
+        }
+      }
+
+      //  todo functionality
+      let todos = [];
+      let counter = 0;
+      const todo_container = document.getElementById("todo_container");
+      const add_todo_btn = document.getElementById("add_todo_btn");
+      add_todo_btn.addEventListener("click", function (e) {
+        const todo_input = document.getElementById("todo_input");
+
+        todos.push({
+          value: todo_input.value,
+          id: counter++,
+        });
+        console.log(todos);
+        const todoElem = document.createElement("div");
+        todos.map((t) => {
+          todoElem.style.display = "flex";
+          todoElem.style.margin = "2%";
+          todoElem.style.gap = "10px";
+          todoElem.innerHTML = `<span>${t.value}</span>`;
+          todoElem.innerHTML += `<button id="delete_btn" style="background:red; color:white;">Delete Todo</button>`;
+          todo_container.appendChild(todoElem);
+        });
+
+        todo_input.value = "";
+      });
+     
+      function deleteTodo(id) {
+        console.log("called");
+        console.log(id);
+      }
+    </script>
+  </body>
+</html>
