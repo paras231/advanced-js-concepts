@@ -22,6 +22,7 @@ import TabComponent from "./advancedUi/TabComponent";
 import TicTacToe from "./games/TicTacToe";
 import Elements from "./dragandDrop/Elements";
 import FileUploader from "./dragandDrop/FileUploader";
+import Form from "./advancedUi/Form";
 const App = () => {
   const tabData = [
     {
@@ -47,7 +48,7 @@ const App = () => {
           <BrowserRouter>
             <Routes>
               {/* <Route path="/" element={<StoreStateUrl/>}/> */}
-              <Route path="/" element={<FileUploader />} />
+              <Route path="/" element={<Form />} />
             </Routes>
           </BrowserRouter>
         </div>
