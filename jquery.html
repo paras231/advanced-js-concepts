@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      .container {
+        margin-top: 5vh;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        column-gap: 5px;
+        row-gap: 5px;
+      }
+      .card-container {
+        width: 15vw;
+        height: 20vh;
+        background: purple;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .search-post {
+        padding: 4px;
+        padding-left: 4px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Build web using vanilla js and jquery.</h1>
+    <input
+      type="text"
+      id="search-post"
+      class="search-post"
+      placeholder="Search posts..."
+    />
+    <div class="container"></div>
+
+    <script>
+      $("#search-post").on("input", function (e) {
+        console.log(e.target.value);
+      });
+      (() => {
+        $.get(
+          "https://jsonplaceholder.typicode.com/posts",
+          function (data, status) {
+            console.log(data);
+            if (status == "success") {
+              // get container
+              const container = $(".container");
+              data.forEach((post) => {
+                container.append(`<div data-post-card=${post.id} class="card-container">
+                    <b>${post.title}</b>
+                    <span class="card-body">${post.body}</span>
+                  </div>`);
+              });
+            }
+            // get the single post by id on card click
+            $("[data-post-card]").on("click", function () {
+              const id = $(this).attr("data-post-card");
+              console.log(id);
+              // fetch single post on clicking card
+              $.get(
+                `https://jsonplaceholder.typicode.com/posts/${id}`,
+                function (d, e) {
+                  console.log(d);
+                }
+              );
+            });
+          }
+        );
+      })();
+    </script>
+  </body>
+</html>

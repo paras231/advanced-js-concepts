@@ -23,6 +23,7 @@ import TicTacToe from "./games/TicTacToe";
 import Elements from "./dragandDrop/Elements";
 import FileUploader from "./dragandDrop/FileUploader";
 import Form from "./advancedUi/Form";
+import CheckboxFilters from "./filters/CheckboxFilters";
 const App = () => {
   const tabData = [
     {
@@ -48,7 +49,7 @@ const App = () => {
           <BrowserRouter>
             <Routes>
               {/* <Route path="/" element={<StoreStateUrl/>}/> */}
-              <Route path="/" element={<Form />} />
+              <Route path="/" element={<CheckboxFilters />} />
             </Routes>
           </BrowserRouter>
         </div>

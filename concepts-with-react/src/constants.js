@@ -71,3 +71,31 @@ export const users = [
     address: "Chandigarh",
   },
 ];
+
+export const shopData = [
+  {
+    product: "Nike shoes",
+    category: "shoes",
+    rating: 4,
+  },
+  {
+    product: "Gold Chain",
+    category: "jwellry",
+    rating: 3,
+  },
+  {
+    product: "Denim t shirt",
+    category: "clothes",
+    rating: 4,
+  },
+  {
+    product: "Adidas",
+    category: "shoes",
+    rating: 5,
+  },
+  {
+    product: "Checked short",
+    category: "clothes",
+    rating: 4,
+  },
+];
