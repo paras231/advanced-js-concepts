@@ -23,6 +23,7 @@ import {
   find3Sum,
   // removeDuplicates,
   moveZeros,
+  getUniqueElements
 } from "./loops_script.js";
 // import dsa files
 import Stack, { TextEditor } from "./dsa/stack.js";
@@ -246,3 +247,8 @@ const removed_duplicates = removeDuplicates([10,20,20,35,45]);
 const vowels_counter = countVowels('origin');
 
 // console.log(vowels_counter);
+
+const unique = getUniqueElements([10,20,10,30,40,30,50,11,11]);
+
+
+console.log(unique);

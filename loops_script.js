@@ -183,6 +183,40 @@ export function moveZeros(array) {
   let right = 0;
 }
 
-
 //  to solve the problems with pointer techniques we need to see how we are taking pointers.
 //  we can not use same approach all the time.
+
+/**
+ *
+ * get unique elements from array
+ * @param {Array} array
+ * @return {Array}
+ */
+export function getUniqueElements(arr) {
+  let uniqueElem = [];
+  let repeatingElem = [];
+  for (let index = 0; index < arr.length; index++) {
+    if (!uniqueElem.includes(arr[index])) {
+      uniqueElem.push(arr[index]);
+    } else {
+      repeatingElem.push(arr[index]);
+    }
+  }
+  return { uniqueElem, repeatingElem };
+}
+
+//  array intersection function
+
+function findArrayIntersection(arr1, arr2) {
+  let common_elements = [];
+  for (let i = 0; i < arr1.length; i++) {
+    if (arr2.includes(arr1[i])) {
+      common_elements.push(arr1[i]);
+    }
+  }
+  return common_elements;
+}
+
+const values = findArrayIntersection([2, 3, 4, 5], [4, 5]);
+
+console.log(values);
