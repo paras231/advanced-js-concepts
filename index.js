@@ -23,7 +23,9 @@ import {
   find3Sum,
   // removeDuplicates,
   moveZeros,
-  getUniqueElements
+  getUniqueElements,
+  findMaxAndMin,
+  removeDuplicatesV2
 } from "./loops_script.js";
 // import dsa files
 import Stack, { TextEditor } from "./dsa/stack.js";
@@ -248,7 +250,12 @@ const vowels_counter = countVowels('origin');
 
 // console.log(vowels_counter);
 
-const unique = getUniqueElements([10,20,10,30,40,30,50,11,11]);
+// const unique = getUniqueElements([10,20,10,30,40,30,50,11,11]);
 
 
-console.log(unique);
+// console.log(unique);
+
+// const maxMinVal  = findMaxAndMin([20,32,18,35,17]);
+// console.log(maxMinVal);
+
+removeDuplicatesV2([20,30,10,40,20,10]);

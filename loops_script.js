@@ -220,3 +220,42 @@ function findArrayIntersection(arr1, arr2) {
 const values = findArrayIntersection([2, 3, 4, 5], [4, 5]);
 
 console.log(values);
+
+/**
+ * find max and min from an array
+ */
+
+export function findMaxAndMin(arr) {
+  let max;
+  let min;
+  const sortedArr = arr.sort((a, b) => a - b);
+  max = sortedArr[sortedArr.length - 1];
+  min = sortedArr[0];
+  return {
+    max,
+    min,
+  };
+}
+
+/**
+ * remove duplicates v2
+ */
+
+export function removeDuplicatesV2(arr) {
+  let duplicates = [];
+  const set = new Set();
+  let unique = [];
+  for (let index = 0; index < arr.length; index++) {
+    if (!set.has(arr[index])) {
+      set.add(arr[index]);
+    } else {
+      duplicates.push(arr[index]);
+    }
+  }
+  unique = [...set];
+
+  return {
+    unique,
+    duplicates,
+  };
+}
