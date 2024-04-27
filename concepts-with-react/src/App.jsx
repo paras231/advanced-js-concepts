@@ -24,6 +24,7 @@ import Elements from "./dragandDrop/Elements";
 import FileUploader from "./dragandDrop/FileUploader";
 import Form from "./advancedUi/Form";
 import CheckboxFilters from "./filters/CheckboxFilters";
+import DndGame from "./dragandDrop/DndGame";
 const App = () => {
   const tabData = [
     {
@@ -45,11 +46,11 @@ const App = () => {
         {/* <Banner /> */}
         {/* <Sidebar routes={routes}/> */}
         {/* <ReactportalComponent/> */}
-        <div className="p-10">
+        <div className=" ">
           <BrowserRouter>
             <Routes>
               {/* <Route path="/" element={<StoreStateUrl/>}/> */}
-              <Route path="/" element={<CheckboxFilters />} />
+              <Route path="/" element={<DndGame />} />
             </Routes>
           </BrowserRouter>
         </div>
