@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styles from "./calendar.module.css";
 
-
 const CustomCalendar = () => {
   const [selectedMonth, setSelectedMonth] = useState({
     name: "",
@@ -107,14 +106,23 @@ function DateDisplayer({ selectedMonth, currenYear, allMonths }) {
   useEffect(() => {
     getMonthDayArray(selectedMonth, currenYear);
   }, [selectedMonth, currenYear]);
-  console.log(daysList);
+
+  const [selectedRange, setSelectedRange] = useState([]);
+
+  function handleSelectDateRange(startDate, endDate) {
+    console.log(startDate,endDate);
+    const range = [...daysList];
+    const rangeData =  range.slice(startDate.date, endDate.date);
+    setSelectedRange(rangeData);
+  }
+  console.log(selectedRange);
   return (
     <>
       <main className={styles.displayer_container}>
         <section className={styles.date_display_wrapper}>
-          {daysList.map((day) => {
+          {daysList.map((day, idx) => {
             return (
-              <button className={styles.date_btn}>
+              <button onClick={()=>handleSelectDateRange(day,day)} key={idx} className={`${styles.date_btn} `}>
                 <span>{day.day}</span>
                 <span>{day.date}</span>
               </button>
@@ -155,10 +163,7 @@ function MonthsList({
   currrentMonth,
   changeYearHandler,
 }) {
-  
-
-  // handle logic for day selection 
-
+  // handle logic for day selection
 
   return (
     <>

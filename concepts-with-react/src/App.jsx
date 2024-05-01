@@ -50,7 +50,7 @@ const App = () => {
           <BrowserRouter>
             <Routes>
               {/* <Route path="/" element={<StoreStateUrl/>}/> */}
-              <Route path="/" element={<DndGame />} />
+              <Route path="/" element={<CustomCalendar />} />
             </Routes>
           </BrowserRouter>
         </div>
