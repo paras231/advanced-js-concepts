@@ -25,6 +25,9 @@ import FileUploader from "./dragandDrop/FileUploader";
 import Form from "./advancedUi/Form";
 import CheckboxFilters from "./filters/CheckboxFilters";
 import DndGame from "./dragandDrop/DndGame";
+import BulderHandler from "./componentsBuilder/BulderHandler";
+
+
 const App = () => {
   const tabData = [
     {
@@ -50,7 +53,8 @@ const App = () => {
           <BrowserRouter>
             <Routes>
               {/* <Route path="/" element={<StoreStateUrl/>}/> */}
-              <Route path="/" element={<DndGame />} />
+              {/* <Route path="/" element={<DndGame />} /> */}
+  <Route path="/" element={<BulderHandler />} />
             </Routes>
           </BrowserRouter>
         </div>
