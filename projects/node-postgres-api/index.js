@@ -4,7 +4,7 @@ import pg from "pg";
 import User from "./models/User.js";
 import { sequelize } from "./dbConnect.js";
 
-dotenv.config();
+dotenv.config(); 
 
 const PORT = 5000;
 //  connect to postgres db
