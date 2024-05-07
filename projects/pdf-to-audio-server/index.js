@@ -1,8 +1,9 @@
-import express from "express";
+import express, { text } from "express";
 import cors from "cors";
 import fs from "fs";
 import path from "path";
 import multer from "multer";
+import convertTexToAudio from "./textToAudio.js";
 import { fileURLToPath } from "url";
 import generateTextFromPdf from "./lib.js";
 const app = express();
@@ -55,9 +56,12 @@ app.post("/upload-pdf", upload.single("pdf"), async (req, res) => {
       fs.unlink(`uploads/${pdf_file.originalname}`,(error)=>{
         console.log(error);
       });
+      //  convert the text to audio and get response 
+      const audio =    await convertTexToAudio(text_content);
+     
       return res
         .status(200)
-        .json({ msg: "File uploaded successfully", text_content });
+        .json({ msg: "File uploaded successfully", audio });
     });
    
   } catch (error) {
