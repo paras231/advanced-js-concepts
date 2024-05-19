@@ -12,12 +12,16 @@ const ButtonBuilder = ({
   eventHandler,
   fontSize,
   fontWeight,
+  border,
+  outline
 }) => {
+  console.log(bgColor);
   return (
     <>
       <button
+        style={{background:`${bgColor}`}}
         onClick={eventHandler}
-        className={`rounded-[${borderRadius}] font-[${fontWeight}]  w-[${width}] bg-[${bgColor}] text-[${textColor}]`}
+        className={`rounded-[${borderRadius}] font-[${fontWeight}]  w-[${width}]  text-[${textColor}]`}
       >
         {title}
       </button>

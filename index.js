@@ -13,6 +13,9 @@ import {
   myPromise,
   readingFile,
   createOrReadFile,
+  promiseWrapper,
+  implementAllPromises,
+  higherOrderFunc
 } from "./function_script.js";
 // import lodash methods-:
 import { lodashArrayMethods } from "./lodash.js";
@@ -258,4 +261,23 @@ const vowels_counter = countVowels('origin');
 // const maxMinVal  = findMaxAndMin([20,32,18,35,17]);
 // console.log(maxMinVal);
 
-removeDuplicatesV2([20,30,10,40,20,10]);
+// removeDuplicatesV2([20,30,10,40,20,10]);
+
+function cb() {
+  return {
+    user:"user"
+  };
+}
+
+promiseWrapper(cb);
+
+
+function newCallback(){
+  return false;
+}
+
+// promiseWrapper(newCallback);
+
+promiseWrapper(implementAllPromises);
+
+console.log(higherOrderFunc()());

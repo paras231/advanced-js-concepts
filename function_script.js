@@ -298,7 +298,6 @@ export function removeDuplicates(array) {
   return array;
 }
 
-
 /**
  * count vowels in a string
  * @param {String} string
@@ -306,17 +305,17 @@ export function removeDuplicates(array) {
  */
 
 export function countVowels(string) {
-  if(!string){
-     return 0   ;
+  if (!string) {
+    return 0;
   }
-    let vowels =['a','e','i','o','u'];
-    let counter = 0;
-     for (let index = 0; index < string.length; index++) {
-           if(vowels.includes(string[index])) {
-              counter++;
-           }
-     } 
-     return counter;
+  let vowels = ["a", "e", "i", "o", "u"];
+  let counter = 0;
+  for (let index = 0; index < string.length; index++) {
+    if (vowels.includes(string[index])) {
+      counter++;
+    }
+  }
+  return counter;
 }
 
 /**
@@ -326,8 +325,8 @@ export function countVowels(string) {
  */
 
 export function countWords(string) {
-  if(!string) return 0;
-  string =  string.split(' ');
+  if (!string) return 0;
+  string = string.split(" ");
   return string.length;
 }
 
@@ -337,16 +336,16 @@ export function countWords(string) {
  * @return {String} string
  */
 
-export function longestWord(string){
-  if(!string) return 0;
-  string =  string.split(' ');
-  let longest_word = '';
+export function longestWord(string) {
+  if (!string) return 0;
+  string = string.split(" ");
+  let longest_word = "";
   let longest_length = 0;
-  for(let index = 0; index<string.length; index++){
-     if(string[index].length>longest_length){
-         longest_word = string[index];
-         longest_length =  string[index].length;
-     } 
+  for (let index = 0; index < string.length; index++) {
+    if (string[index].length > longest_length) {
+      longest_word = string[index];
+      longest_length = string[index].length;
+    }
   }
   return longest_word;
 }
@@ -357,15 +356,14 @@ export function longestWord(string){
  * @return {string} sentence
  */
 
-export function convertToUppercase(sentence){
-  sentence = sentence.split(' ');
-  let converted_sentence = '';
-  for(let i=0; i<sentence.length; i++){
-      
-      sentence[i] = sentence[i].charAt(0).toUpperCase() + sentence[i].slice(1);
+export function convertToUppercase(sentence) {
+  sentence = sentence.split(" ");
+  let converted_sentence = "";
+  for (let i = 0; i < sentence.length; i++) {
+    sentence[i] = sentence[i].charAt(0).toUpperCase() + sentence[i].slice(1);
   }
   console.log(sentence);
-  converted_sentence = sentence.join(' ');
+  converted_sentence = sentence.join(" ");
   return converted_sentence;
 }
 
@@ -375,33 +373,32 @@ export function convertToUppercase(sentence){
  * @return {string} reverse words
  */
 
-export function reverseWordsFromSentence(sentence){
-  sentence =  sentence.split(' ');
-  for(let index=0 ; index<sentence.length; index++){
-     let reversed_val = '';
-      for(let j = sentence[index].length-1; j>=0; j--){
-           reversed_val += sentence[index][j];
-      }
-      sentence[index] = reversed_val;
+export function reverseWordsFromSentence(sentence) {
+  sentence = sentence.split(" ");
+  for (let index = 0; index < sentence.length; index++) {
+    let reversed_val = "";
+    for (let j = sentence[index].length - 1; j >= 0; j--) {
+      reversed_val += sentence[index][j];
+    }
+    sentence[index] = reversed_val;
   }
- return  sentence.join(" ");
+  return sentence.join(" ");
 }
 
 /**
  * sort array of objects by property
  * this only works for number properties
  */
-export function sortArrayofObjectByProperty(array,property){
+export function sortArrayofObjectByProperty(array, property) {
   let sorted_arr = [];
- 
-  for(let i = 0; i<array.length; i++){
-      // check if property exists in object
-      if(array[i].hasOwnProperty(property)){
-          sorted_arr.push(array[i]);
-      }
+
+  for (let i = 0; i < array.length; i++) {
+    // check if property exists in object
+    if (array[i].hasOwnProperty(property)) {
+      sorted_arr.push(array[i]);
+    }
   }
-  return sorted_arr.sort((a,b)=>a[property]-b[property]);
-  
+  return sorted_arr.sort((a, b) => a[property] - b[property]);
 }
 
 /**
@@ -411,14 +408,13 @@ export function sortArrayofObjectByProperty(array,property){
  * @return {Number} count
  */
 
-
-export function countOccourence(elements,val){
+export function countOccourence(elements, val) {
   let counter = 0;
- 
-  for(let i = 0; i<elements.length; i++){
-      if(val==elements[i]){
-          counter++;
-      }
+
+  for (let i = 0; i < elements.length; i++) {
+    if (val == elements[i]) {
+      counter++;
+    }
   }
   return counter;
 }
@@ -429,16 +425,15 @@ export function countOccourence(elements,val){
  * @return {Number} sum of array elements
  */
 
-export function findAvg(array){
+export function findAvg(array) {
   let avg = 0;
-  let sum =0;
-  for(let i = 0; i<array.length; i++){
-      sum += array[i];
+  let sum = 0;
+  for (let i = 0; i < array.length; i++) {
+    sum += array[i];
   }
-  avg = sum/array.length;
+  avg = sum / array.length;
   return avg;
 }
-
 
 /**
  * convert a number into roman numerical
@@ -446,41 +441,102 @@ export function findAvg(array){
  * @return {String} roman string
  */
 
-
-export function intToRoman(num){
+export function intToRoman(num) {
   const romanNumericals = [
-      {
-          value:1000,
-          symbol:"M"
-      },
-      {
-          value:500,
-          symbol:"D"
-      },
-      {
-          value:100,
-          symbol:"C"
-      },
-      {
-          value:50,
-          symbol:"L"
-      },
-      {
-          value:10,
-          symbol:"X"
-      },
-      {
-          value:1,
-          symbol:"I"
-      }
-      ];
-      let result = '';
-      for(let i =0; i<romanNumericals.length;i++){
-          
-          while(num>= romanNumericals[i].value){
-              result += romanNumericals[i].symbol;
-              num -= romanNumericals[i].value;
-          }
-      }
-      return result;
+    {
+      value: 1000,
+      symbol: "M",
+    },
+    {
+      value: 500,
+      symbol: "D",
+    },
+    {
+      value: 100,
+      symbol: "C",
+    },
+    {
+      value: 50,
+      symbol: "L",
+    },
+    {
+      value: 10,
+      symbol: "X",
+    },
+    {
+      value: 1,
+      symbol: "I",
+    },
+  ];
+  let result = "";
+  for (let i = 0; i < romanNumericals.length; i++) {
+    while (num >= romanNumericals[i].value) {
+      result += romanNumericals[i].symbol;
+      num -= romanNumericals[i].value;
+    }
+  }
+  return result;
 }
+
+/**
+ * promise based problems
+ * this is promise function that takes a callback which can be anything .
+ * this is a resuable promise function
+ */
+
+function createPromise(cb) {
+  return new Promise((resolve, reject) => {
+    if (cb()) {
+      console.log('resolved');
+      resolve(cb());
+    } else {
+      reject("Callback could not be called");
+    }
+  });
+}
+
+
+
+export function promiseWrapper(callback) {
+  createPromise(callback)
+    .then((data) => console.log(data))
+    .catch((err) => console.log(err));
+}
+
+
+/**
+ * handeling multiple promises using promise.all and it's real world examples
+ */
+
+const p1 = Promise.resolve('p1 resolved');
+const p2 = Promise.resolve('p2 resolved');
+
+export const implementAllPromises =()=>{
+  return Promise.all([p1,p2]).then(data=>data).catch(err=>err);
+}
+
+/**
+ * implements a higher order functions
+ * a higher order function is a function that returns a function or accepts a function as parameter
+ * above function promiseWrapper is an example of a higher order function
+ */
+
+export function higherOrderFunc(){
+  return function (){
+    return 'hof'
+  }
+}
+
+
+
+/**
+ * higher order function as arrow function
+ */
+
+const higherOrderArrow  = () => ()=>{
+
+}
+
+/**
+ * 
+ */
