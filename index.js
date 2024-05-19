@@ -32,6 +32,7 @@ import {
 } from "./loops_script.js";
 // import dsa files
 import Stack, { TextEditor } from "./dsa/stack.js";
+import HashMap from "./dsa/hashMap.js";
 import polyfill from "./polyfils.js";
 import {
   fizzBuzz,
@@ -269,7 +270,8 @@ function cb() {
   };
 }
 
-promiseWrapper(cb);
+// promiseWrapper(cb);
+
 
 
 function newCallback(){
@@ -278,6 +280,20 @@ function newCallback(){
 
 // promiseWrapper(newCallback);
 
-promiseWrapper(implementAllPromises);
+// promiseWrapper(implementAllPromises);
 
-console.log(higherOrderFunc()());
+// console.log(higherOrderFunc()());
+
+
+// use hash map
+
+const hashMap = new HashMap(5) ;
+
+hashMap.insert('name','Paras');
+
+console.log(hashMap.display());
+
+hashMap.delete('name');
+
+console.log(hashMap.get('name'));
+
