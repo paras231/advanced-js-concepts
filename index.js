@@ -33,6 +33,7 @@ import {
 // import dsa files
 import Stack, { TextEditor } from "./dsa/stack.js";
 import HashMap from "./dsa/hashMap.js";
+import {recursiveApproach,iterativeBinarySearcg} from "./dsa/algorithms/binarySearch.js";
 import polyfill from "./polyfils.js";
 import {
   fizzBuzz,
@@ -287,13 +288,20 @@ function newCallback(){
 
 // use hash map
 
-const hashMap = new HashMap(5) ;
+// const hashMap = new HashMap(5) ;
 
-hashMap.insert('name','Paras');
+// hashMap.insert('name','Paras');
 
-console.log(hashMap.display());
+// console.log(hashMap.display());
 
-hashMap.delete('name');
+// hashMap.delete('name');
 
-console.log(hashMap.get('name'));
+// console.log(hashMap.get('name'));
 
+const searchArr =[10,15,16,18,22,26];
+
+// const binarySearchResult =  recursiveApproach(searchArr,23,0,searchArr.length-1);
+// console.log(binarySearchResult);
+
+const binarySearchResult =  iterativeBinarySearcg(searchArr,9);
+console.log(binarySearchResult,'search result');
