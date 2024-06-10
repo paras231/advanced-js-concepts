@@ -41,3 +41,5 @@ export class BinaryTree{
      }
     }
 }
+
+//  complete tree data structure ...
