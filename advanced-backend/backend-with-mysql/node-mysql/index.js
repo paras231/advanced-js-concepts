@@ -42,6 +42,12 @@ conn.connect((err) => {
 
 // createUserTable();
 
+
+// create user_events table which consists of user_id , event_id and many to many relationship
+
+
+
+
 app.use(express.json());
 
 // api endpoints
@@ -110,6 +116,36 @@ app.post("/api/login", async (req, res) => {
     return responseJson(res, 400, "failure", error);
   }
 });
+
+// create events
+
+
+app.post("/api/create-event",async(req,res)=>{
+  try {
+    const {eventName,code} = req.body;
+    const selectSql = `SELECT * FROM EVENTS WHERE event_code = ?`;
+    conn.query(selectSql,[code],(err, result)=>{
+      if(err){
+        return responseJson(res,400,"Something went wrong",err);
+      }
+     if(result.length>0){
+      return responseJson(res,400,"Event already exists with this code",result);
+     }
+     const insertQuery  = `INSERT INTO events (event_name,event_code) VALUES (?,?)`;
+     conn.query(insertQuery,[eventName,code],(evtErr,r)=>{
+          if(evtErr){
+            return responseJson(res,400,"Something went wrong while creating event",evtErr);
+          }
+          if(r){
+            return responseJson(res,200,"Event created",r);
+          }
+     })
+    })
+  } catch (error) {
+    return responseJson(res,400,"Can not create event",error);
+  }
+})
+
 
 app.listen(3000, () => {
   console.log("node-mysql server started");
