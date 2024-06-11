@@ -7,10 +7,7 @@ import { responseJson } from "./utils/responseHandler.js";
 import logger from "./logger.js";
 const app = express();
 
-
-
 dotenv.config();
-
 
 const morganFormat = ":method :url :status :response-time ms";
 
@@ -52,20 +49,21 @@ conn.connect((err) => {
 // create user_events table which consists of user_id , event_id and many to many relationship
 
 app.use(express.json());
-app.use(morgan(morganFormat, {
-  stream: {
-    write: (message) => {
-      const logObject = {
-        method: message.split(' ')[0],
-        url: message.split(' ')[1],
-        status: message.split(' ')[2],
-        responseTime: message.split(' ')[3],
-
-      };
-      logger.info(JSON.stringify(logObject));
-    }
-  }
-}));
+app.use(
+  morgan(morganFormat, {
+    stream: {
+      write: (message) => {
+        const logObject = {
+          method: message.split(" ")[0],
+          url: message.split(" ")[1],
+          status: message.split(" ")[2],
+          responseTime: message.split(" ")[3],
+        };
+        logger.info(JSON.stringify(logObject));
+      },
+    },
+  })
+);
 // api endpoints
 
 // create or register user Api
@@ -222,14 +220,10 @@ app.post("/api/join/event", async (req, res) => {
 
 // fetch a users's all events
 
-app.get("/api/users/events",async(req,res)=>{
+app.get("/api/users/events", async (req, res) => {
   try {
-    
-  } catch (error) {
-    
-  }
-})
-
+  } catch (error) {}
+});
 
 app.listen(3000, () => {
   console.log("node-mysql server started");
