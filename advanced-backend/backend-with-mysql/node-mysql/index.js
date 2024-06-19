@@ -222,7 +222,29 @@ app.post("/api/join/event", async (req, res) => {
 
 app.get("/api/users/events", async (req, res) => {
   try {
-  } catch (error) {}
+    // performing a inner join
+    // const joinQuery = `SELECT users.username, users.email ,user_events.user_id,user_events.event_id
+    //                    FROM user_events
+    //                    INNER JOIN users ON user_events.user_id = users.id`;
+    //  conn.query(joinQuery,(err,result)=>{
+    //   if(err) {
+    //     return responseJson(res,400,"Something went wrong",err);
+    //   }
+    //   return responseJson(res,200,"OK",result);
+    //  })  
+                    //  performing a left join
+    const joinQuery = `SELECT *
+                       FROM users
+                       LEFT JOIN user_events ON users.id = user_events.user_id`;
+     conn.query(joinQuery,(err,result)=>{
+      if(err) {
+        return responseJson(res,400,"Something went wrong",err);
+      }
+      return responseJson(res,200,"OK",result);
+     })   ;   
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 app.listen(3000, () => {
